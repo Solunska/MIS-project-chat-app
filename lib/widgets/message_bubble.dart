@@ -93,7 +93,7 @@ class MessageBubble extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: isMe
-                          ? Color.fromARGB(255, 168, 162, 159)
+                          ? const Color.fromARGB(255, 168, 162, 159)
                           : theme.colorScheme.secondary.withAlpha(200),
                       // Only show the message bubble's "speaking edge" if first in
                       // the chain.
