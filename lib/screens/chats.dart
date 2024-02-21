@@ -1,26 +1,55 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:first_app/screens/chat_messages.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  void setupPushNotifications() async {
+    final fcm = FirebaseMessaging.instance;
+    await fcm.requestPermission();
+
+    fcm.subscribeToTopic('chat');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setupPushNotifications();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFf2e9e4),
+      backgroundColor: const Color(0xFFfffcf2),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF22223b),
-        title: const Text('Conversations', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize: 30),),
+        backgroundColor: const Color(0xFF6a040f),
+        title: const Text(
+          'Conversations',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFfffcf2),
+            fontSize: 25,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();
             },
-            icon: const Icon(Icons.exit_to_app,color: Colors.white,),
+            icon: const Icon(
+              Icons.exit_to_app,
+              color: Color(0xFFfffcf2),
+            ),
           ),
         ],
       ),
@@ -28,6 +57,7 @@ class ChatScreen extends StatelessWidget {
     );
   }
 }
+
 class UserList extends StatelessWidget {
   const UserList({super.key});
 
@@ -66,6 +96,7 @@ class UserList extends StatelessWidget {
     );
   }
 }
+
 class UserListItem extends StatelessWidget {
   final String userId;
   final String username;
@@ -134,7 +165,13 @@ class UserListItem extends StatelessWidget {
             leading: CircleAvatar(
               backgroundImage: NetworkImage(userImage),
             ),
-            title: Text(username,style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.black,fontSize: 20)),
+            title: Text(
+              username,
+              style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF403d39),
+                  fontSize: 20),
+            ),
             subtitle: const Text('No messages'),
             onTap: () {
               Navigator.push(
@@ -163,9 +200,15 @@ class UserListItem extends StatelessWidget {
           leading: CircleAvatar(
             backgroundImage: NetworkImage(userImage),
           ),
-          title: Text(username,style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.black,fontSize: 20)),
-            
-          subtitle: Text(subtitleText,style: const TextStyle(color: Colors.black)),
+          title: Text(
+            username,
+            style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF403d39),
+                fontSize: 20),
+          ),
+          subtitle: Text(subtitleText,
+              style: const TextStyle(color: Color.fromARGB(255, 84, 84, 84))),
           onTap: () {
             Navigator.push(
               context,

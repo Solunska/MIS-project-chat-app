@@ -91,7 +91,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF22223b),
+      backgroundColor: const Color(0xFF252422),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -104,8 +104,8 @@ class _AuthScreenState extends State<AuthScreen> {
                   left: 20,
                   right: 20,
                 ),
-                width: 200,
-                child: Image.asset('assets/images/chat-logo1.png'),
+                width: 250,
+                child: Image.asset('assets/images/chat.png'),
               ),
               Card(
                 margin: const EdgeInsets.all(20),

@@ -6,7 +6,7 @@ class MapScreen extends StatefulWidget {
   const MapScreen({
     super.key,
     this.location =
-        const PlaceLocation(latitude: 37.422, longitude: -122.084, address: ''),
+        const PlaceLocation(latitude: 41.9981, longitude: 21.4254, address: ''),
     this.isSelecting = true,
   });
 
@@ -26,15 +26,34 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(widget.isSelecting ? 'Pick your Location' : 'User Location'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Color(0xFFfffcf2),
+          ),
+        ),
+        backgroundColor: const Color(0xFF6a040f),
+        title: Text(
+          widget.isSelecting ? 'Pick your Location' : 'User Location',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFfffcf2),
+            fontSize: 25,
+          ),
+        ),
         actions: [
           if (widget.isSelecting)
             IconButton(
               onPressed: () {
                 Navigator.of(context).pop(_pickedLocation);
               },
-              icon: const Icon(Icons.save),
+              icon: const Icon(
+                Icons.save,
+                color: Color(0xFFfffcf2),
+              ),
             )
         ],
       ),
