@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_app/screens/chat_detail.dart';
-import 'package:first_app/widgets/chat_messages.dart';
+import 'package:first_app/screens/chat_messages.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
@@ -25,11 +24,13 @@ class ChatScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: UserList(),
+      body: const UserList(),
     );
   }
 }
 class UserList extends StatelessWidget {
+  const UserList({super.key});
+
   @override
   Widget build(BuildContext context) {
     final currentUserUid = FirebaseAuth.instance.currentUser?.uid;
@@ -70,10 +71,11 @@ class UserListItem extends StatelessWidget {
   final String username;
   final String userImage;
 
-  UserListItem({
+  const UserListItem({
     required this.userId,
     required this.username,
     required this.userImage,
+    super.key,
   });
 
   @override
@@ -108,7 +110,7 @@ class UserListItem extends StatelessWidget {
               backgroundImage: NetworkImage(userImage),
             ),
             title: Text(username),
-            subtitle: Text('Loading...'),
+            subtitle: const Text('Loading...'),
             onTap: () {
               Navigator.push(
                 context,
@@ -132,8 +134,8 @@ class UserListItem extends StatelessWidget {
             leading: CircleAvatar(
               backgroundImage: NetworkImage(userImage),
             ),
-            title: Text(username),
-            subtitle: Text('No messages'),
+            title: Text(username,style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.black,fontSize: 20)),
+            subtitle: const Text('No messages'),
             onTap: () {
               Navigator.push(
                 context,

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:first_app/models/location.dart';
-import 'package:first_app/screens/location_input.dart';
+import 'package:first_app/widgets/location_input.dart';
 import 'package:first_app/widgets/user_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,19 +46,19 @@ class _AuthScreenState extends State<AuthScreen> {
         final userCredentials = await _firebase.signInWithEmailAndPassword(
             email: _enteredEmail, password: _enteredPassword);
       } else {
-        final userCredential = await _firebase.createUserWithEmailAndPassword(
+        final userCredentials = await _firebase.createUserWithEmailAndPassword(
             email: _enteredEmail, password: _enteredPassword);
 
         final storageRef = FirebaseStorage.instance
             .ref()
             .child('user_images')
-            .child('${userCredential.user!.uid}.jpg');
+            .child('${userCredentials.user!.uid}.jpg');
         await storageRef.putFile(_selectedImage!);
         final imageUrl = await storageRef.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection('users')
-            .doc(userCredential.user!.uid)
+            .doc(userCredentials.user!.uid)
             .set({
           'username': _enteredUsername,
           'email': _enteredEmail,
