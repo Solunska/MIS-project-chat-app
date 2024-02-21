@@ -23,7 +23,7 @@ class App extends StatelessWidget {
       title: 'FlutterChat',
       theme: ThemeData().copyWith(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF344e41)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF22223b)),
       ),
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),

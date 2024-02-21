@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:first_app/models/location.dart';
 import 'package:first_app/screens/location_input.dart';
 import 'package:first_app/widgets/user_image_picker.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _AuthScreenState extends State<AuthScreen> {
   var _enteredUsername = '';
   File? _selectedImage;
   var _isAuthenticating = false;
+  PlaceLocation? _selectedLocation;
 
   void _submit() async {
     final isValid = _form.currentState!.validate();
@@ -61,6 +63,13 @@ class _AuthScreenState extends State<AuthScreen> {
           'username': _enteredUsername,
           'email': _enteredEmail,
           'image_url': imageUrl,
+          'location': _selectedLocation != null
+              ? {
+                  'latitude': _selectedLocation!.latitude,
+                  'longitude': _selectedLocation!.longitude,
+                  'address': _selectedLocation!.address,
+                }
+              : null, // handle case when location is not selected
         });
       }
     } on FirebaseAuthException catch (error) {
@@ -82,7 +91,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFffffff),
+      backgroundColor: const Color(0xFF22223b),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -100,6 +109,7 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               Card(
                 margin: const EdgeInsets.all(20),
+                color: const Color(0xFFf2e9e4),
                 child: SingleChildScrollView(
                     child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -115,7 +125,11 @@ class _AuthScreenState extends State<AuthScreen> {
                             },
                           ),
                         if (!_isLogin)
-                          LocationInput(),
+                          LocationInput(
+                            onSelectLocation: (location) {
+                              _selectedLocation = location;
+                            },
+                          ),
                         TextFormField(
                           decoration: const InputDecoration(
                             labelText: 'Email',

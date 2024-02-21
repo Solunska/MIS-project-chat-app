@@ -12,14 +12,16 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFf2e9e4),
       appBar: AppBar(
-        title: const Text('Conversations', style: TextStyle(fontWeight: FontWeight.bold),),
+        backgroundColor: const Color(0xFF22223b),
+        title: const Text('Conversations', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize: 30),),
         actions: [
           IconButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();
             },
-            icon: const Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app,color: Colors.white,),
           ),
         ],
       ),
@@ -159,8 +161,9 @@ class UserListItem extends StatelessWidget {
           leading: CircleAvatar(
             backgroundImage: NetworkImage(userImage),
           ),
-          title: Text(username,style: const TextStyle(fontWeight: FontWeight.w600)),
-          subtitle: Text(subtitleText),
+          title: Text(username,style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.black,fontSize: 20)),
+            
+          subtitle: Text(subtitleText,style: const TextStyle(color: Colors.black)),
           onTap: () {
             Navigator.push(
               context,
