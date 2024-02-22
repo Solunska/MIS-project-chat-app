@@ -51,11 +51,15 @@ class ChatMessageScreen extends StatelessWidget {
                 Text(
                   '$username',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFfffcf2),
-                      fontSize: 25),
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFfffcf2),
+                    fontSize: 30,
+                    fontFamily: 'Fredoka',
+                    letterSpacing: 3,
+                  ),
                 ),
                 IconButton(
+                  padding: const EdgeInsets.only(top:7),
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(

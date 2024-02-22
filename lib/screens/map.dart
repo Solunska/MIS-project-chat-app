@@ -41,7 +41,9 @@ class _MapScreenState extends State<MapScreen> {
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Color(0xFFfffcf2),
-            fontSize: 25,
+            fontSize: 30,
+            fontFamily: 'Fredoka',
+            letterSpacing: 3,
           ),
         ),
         actions: [

@@ -100,13 +100,14 @@ class _AuthScreenState extends State<AuthScreen> {
               Container(
                 margin: const EdgeInsets.only(
                   top: 30,
-                  bottom: 20,
+                  bottom: 5,
                   left: 20,
                   right: 20,
                 ),
                 width: 250,
                 child: Image.asset('assets/images/chat.png'),
               ),
+              const Text('ChatGo', style: TextStyle(color: Color(0xFFfffcf2), fontSize: 50, fontWeight: FontWeight.w600, fontFamily: 'ProtestRevolution'),),
               Card(
                 margin: const EdgeInsets.all(20),
                 color: const Color(0xFFf2e9e4),
