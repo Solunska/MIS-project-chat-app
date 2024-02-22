@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:first_app/components/app_bar.dart';
+import 'package:first_app/components/text_style.dart';
 import 'package:first_app/screens/chat_messages.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -31,17 +33,10 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFfffcf2),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF6a040f),
+      appBar: CustomAppBar(
         title: const Text(
           'Conversations',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color(0xFFfffcf2),
-            fontSize: 30,
-            fontFamily: 'Fredoka',
-            letterSpacing: 3,
-          ),
+          style: customTextStyle,
         ),
         actions: [
           IconButton(

@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_app/components/app_bar.dart';
+import 'package:first_app/components/back_button.dart';
+import 'package:first_app/components/text_style.dart';
 import 'package:first_app/models/location.dart';
 import 'package:first_app/screens/auth.dart';
 import 'package:first_app/widgets/chat_detail.dart';
@@ -15,16 +18,11 @@ class ChatMessageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFfffcf2),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF6a040f),
-        leading: IconButton(
+      appBar: CustomAppBar(
+        leading: CustomBackButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Color(0xFFfffcf2),
-          ),
         ),
         title: FutureBuilder(
           future:
@@ -50,16 +48,10 @@ class ChatMessageScreen extends StatelessWidget {
               children: [
                 Text(
                   '$username',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFfffcf2),
-                    fontSize: 30,
-                    fontFamily: 'Fredoka',
-                    letterSpacing: 3,
-                  ),
+                  style: customTextStyle,
                 ),
                 IconButton(
-                  padding: const EdgeInsets.only(top:7),
+                  padding: const EdgeInsets.only(top: 7),
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(

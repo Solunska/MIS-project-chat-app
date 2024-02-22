@@ -47,6 +47,7 @@ dependencies:
   http: ^1.2.0
   google_maps_flutter: ^2.5.3
   firebase_messaging: ^14.7.16
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +84,7 @@ flutter:
     - assets/images/chat-logo1.png
     - assets/images/profile.jpg
     - assets/images/RANDOM-CHAT-Logo.png
+    - assets/images/profile.jpg
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
