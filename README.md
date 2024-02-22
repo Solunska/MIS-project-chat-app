@@ -24,3 +24,6 @@ ChatGo is a versatile and intuitive mobile application built with Flutter that c
 - **Singleton Pattern** is utilized in the project for managing certain critical resources, such as Firebase authentication. 
 - **State Management Pattern**  through local state (e.g., using setState() in LocationInput and NewMessage widgets) 
 - **Component-Based Architecture** is achieved through making elements into separate reusable components
+
+## The look of the application
+- ![Untitled design](https://github.com/Solunska/MIS-project-chat-app/assets/100601635/45995bf9-fcfd-4d43-a020-41f48cc50dc9)
